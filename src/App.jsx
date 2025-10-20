@@ -65,6 +65,7 @@ export default function App() {
           label: p.label,
           onClick: () => handleScrollTo(i),
         }))}
+        uppercase
       />
       <div>
         {pages.map(({ section, hasImage }, i) => (
@@ -85,7 +86,7 @@ export default function App() {
                   maxHeight: "397px",
                   objectFit: "cover",
                   display: "block",
-                  transform: i === 0 ? `translateY(${headerHeight}px)` : "none",
+                  marginTop: i === 0 ? headerHeight : 0,
                 }}
               />
             )}
