@@ -6,7 +6,7 @@
   "files": [
     "dist"
   ],
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Opinionated Vite starter template with ESLint, Prettier, Stylelint and more.",
   "repository": {
     "type": "git",
