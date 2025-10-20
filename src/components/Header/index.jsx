@@ -1,6 +1,5 @@
-import { useRef, useEffect, useState, forwardRef } from "react";
+import { useEffect, useState, forwardRef } from "react";
 import "./Header.css";
-import { textChangeRangeIsUnchanged } from "typescript";
 
 const Header = forwardRef(({
   page1Ref,
@@ -9,9 +8,9 @@ const Header = forwardRef(({
   padding = "2rem 4rem",
   hamburgerSize = 48,
   fontSize = "1rem",
-  uppercase = textChangeRangeIsUnchanged, // 👈 nuevo
-  color = "grey", // 👈 color normal
-  selectedColor = "darkblue", // 👈 color seleccionado
+  uppercase = false, // ✅ valor booleano
+  color = "grey",
+  selectedColor = "darkblue",
   options = [
     { label: "Inicio", href: "#home" },
     { label: "Productos", href: "#products" },
@@ -20,7 +19,7 @@ const Header = forwardRef(({
 }, ref) => {
   const [isSticky, setIsSticky] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0); // 👈 activa por defecto la primera opción
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,10 +39,7 @@ const Header = forwardRef(({
     <header
       ref={ref}
       className={`App-header ${isSticky ? "sticky" : ""}`}
-      style={{
-        backgroundColor,
-        padding,
-      }}
+      style={{ backgroundColor, padding }}
     >
       <img
         src={logoSrc}
@@ -53,7 +49,7 @@ const Header = forwardRef(({
 
       <div className="Header-right">
         <nav
-          className={`Header-nav ${menuOpen ? "open" : ""} mr-24`}
+          className={`Header-nav ${menuOpen ? "open" : ""}`}
           style={{
             fontSize,
             textTransform: uppercase ? "uppercase" : "none",
@@ -64,6 +60,7 @@ const Header = forwardRef(({
               key={i}
               href={opt.href || "#"}
               onClick={(e) => {
+                e.preventDefault(); // 👈 evita el salto instantáneo
                 setSelectedIndex(i);
                 setMenuOpen(false);
                 if (opt.onClick) opt.onClick(e);
@@ -80,7 +77,6 @@ const Header = forwardRef(({
           ))}
         </nav>
 
-        {/* 🍔 Hamburguesa con tamaño dinámico */}
         <button
           className={`Hamburger ${menuOpen ? "active" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -97,6 +93,6 @@ const Header = forwardRef(({
       </div>
     </header>
   );
-})
+});
 
-export default Header
+export default Header;
