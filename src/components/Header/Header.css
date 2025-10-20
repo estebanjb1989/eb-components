@@ -1,0 +1,31 @@
+.App-header {
+  position: fixed; /* Siempre arriba */
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: black;
+  border-bottom: none;
+  transition: background-color 0.4s ease, border-bottom 0.4s ease;
+}
+
+.App-header.sticky {
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+.App-logo {
+  transition: all 0.4s ease;
+}
+
+.logo-small {
+  height: 49px;
+  width: 77px;
+  margin-left: 10%;
+}
+
+.logo-banner {
+  height: auto;
+  width: 240px;
+  margin: 0;
+  object-fit: cover;
+}
