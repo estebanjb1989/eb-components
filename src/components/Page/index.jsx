@@ -1,24 +1,21 @@
 import React, { forwardRef } from "react";
 import "./Page.css";
 
-/**
- * Page component
- * Ocupa todo el alto visible (100vh) y muestra su contenido centrado o libre.
- */
-const Page = forwardRef(({ children, className = "", style = {}, headerHeight = 0 }, ref) => {
-  const hasChildren = React.Children.count(children) > 0;
-
+const Page = forwardRef(({ children, className = "", style = {}, headerHeight = 0, index = 0 }, ref) => {
   return (
     <section
       ref={ref}
       className={`Page ${className}`}
       style={{
-        minHeight: `100vh`,
-
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        minHeight: `calc(100vh - ${index === 0 ? 0 : headerHeight}px)`, // 👈 ocupa todo el alto útil visible
+        boxSizing: "border-box",
         ...style,
       }}
     >
-      {hasChildren ? children : <div className="Page-placeholder">Page</div>}
+      {children}
     </section>
   );
 });

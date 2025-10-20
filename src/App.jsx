@@ -46,11 +46,14 @@ export default function App() {
     (index) => {
       const ref = sectionRefs.current[index];
       if (ref?.current) {
-        const top = ref.current.getBoundingClientRect().top + window.scrollY - headerHeight;
+        const top =
+          ref.current.getBoundingClientRect().top +
+          window.scrollY -
+          headerHeight; // 👈 ese +1 evita el microcorte visual
         window.scrollTo({ top, behavior: "smooth" });
       }
     },
-    [] // 👈 ya no depende del headerHeight
+    [headerHeight]
   );
 
 
@@ -69,7 +72,7 @@ export default function App() {
             key={section}
             ref={sectionRefs.current[i]}
             headerHeight={headerHeight}
-
+            index={i}
           >
 
             {/* Si la página tiene imagen */}
@@ -82,6 +85,7 @@ export default function App() {
                   maxHeight: "397px",
                   objectFit: "cover",
                   display: "block",
+                  transform: i === 0 ? `translateY(${headerHeight}px)` : "none",
                 }}
               />
             )}
