@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState, forwardRef } from "react";
 import "./Header.css";
 import { textChangeRangeIsUnchanged } from "typescript";
 
-export default function Header({
+const Header = forwardRef(({
   page1Ref,
   assets = {},
   backgroundColor = "whitesmoke",
@@ -17,7 +17,7 @@ export default function Header({
     { label: "Productos", href: "#products" },
     { label: "Contacto", href: "#contact" },
   ],
-}) {
+}, ref) => {
   const [isSticky, setIsSticky] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0); // 👈 activa por defecto la primera opción
@@ -38,6 +38,7 @@ export default function Header({
 
   return (
     <header
+      ref={ref}
       className={`App-header ${isSticky ? "sticky" : ""}`}
       style={{
         backgroundColor,
@@ -96,4 +97,6 @@ export default function Header({
       </div>
     </header>
   );
-}
+})
+
+export default Header
