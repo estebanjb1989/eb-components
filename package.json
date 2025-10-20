@@ -7,7 +7,7 @@
     "dist"
   ],
   "style": "dist/eb-components.css",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Opinionated Vite starter template with ESLint, Prettier, Stylelint and more.",
   "repository": {
     "type": "git",
