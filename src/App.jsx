@@ -7,6 +7,7 @@ import CaseStudyBlock from "./components/CaseStudyBlock";
 import CoreValues from "./components/CoreValues";
 
 import banner from "./assets/banners/sample.png"
+import logo from "./assets/logo.png"
 import feature1 from "./assets/features/1.png"
 import feature2 from "./assets/features/2.png"
 import feature3 from "./assets/features/3.png"
@@ -122,6 +123,10 @@ independencia operativa.
   return <LandingPage
     headerProps={{
       backgroundColor: '#F9F0D9',
+      assets: {
+        logo
+      },
+      uppercase: true
     }}
     pages={pages}
   />;
