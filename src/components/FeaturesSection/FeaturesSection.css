@@ -1,7 +1,7 @@
 .FeaturesSection {
   width: 100%;
   background: #fff;
-  padding: 3rem 1rem;
+  padding: 2rem 0;
   box-sizing: border-box;
 }
 
@@ -15,11 +15,13 @@
 }
 
 .FeatureCard {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr; /* 50% arriba, 50% abajo */
   align-items: center;
-  justify-content: flex-start;
-  padding: 1rem;
+  justify-items: center;
+  text-align: center;
+
+  height: 100%; /* o un alto fijo si lo necesitás, ej: 300px */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -29,11 +31,8 @@
 }
 
 .FeatureIcon {
-  width: 80px;
-  height: 80px;
+  width: 120px;
   margin-bottom: 1rem;
-  border: 3px solid transparent;
-  border-radius: 50%;
 }
 
 .FeatureTitle {
@@ -43,7 +42,7 @@
 }
 
 .FeatureText {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: #555;
   line-height: 1.4;
 }
@@ -58,9 +57,5 @@
 @media (max-width: 600px) {
   .FeaturesContainer {
     grid-template-columns: 1fr;
-  }
-
-  .FeatureCard {
-    padding: 1.5rem 0;
   }
 }

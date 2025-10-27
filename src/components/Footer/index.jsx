@@ -12,12 +12,22 @@ import "./Footer.css";
  */
 export default function Footer({
   children,
-  backgroundColor = "#111",
+  foreColor = "#111",
+  backgroundColor = "grey",
   textColor = "#fff",
+  fontSize = 18,
+  fontWeight = 500,
 }) {
   return (
-    <footer className="Footer" style={{ backgroundColor, color: textColor }}>
-      <div className="Footer-content">
+    <footer className="Footer" style={{
+      backgroundColor,
+      color: textColor,
+      fontSize,
+      fontWeight
+    }}>
+      <div className="Footer-content" style={{
+        color: foreColor
+      }}>
         {children}
       </div>
     </footer>

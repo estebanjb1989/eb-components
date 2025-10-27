@@ -6,7 +6,7 @@
   align-items: center;
   box-sizing: border-box;
 
-  margin-top: auto; /* 👈 clave: empuja el footer hacia abajo solo si hay contenido */
+  flex: 1;
 }
 
 .Footer-content {

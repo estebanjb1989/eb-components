@@ -6,7 +6,6 @@ import Footer from "../Footer";
 export default function LandingPage({
   pages = [],
   headerProps = {},
-  footerProps = {},
 }) {
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -66,6 +65,8 @@ export default function LandingPage({
             {page.image && (
               <div
                 style={{
+                  display: 'flex',
+                  flex: 0,
                   position: "relative",
                   width: "100%",
                   marginTop: i === 0 ? headerHeight : 0,
@@ -107,6 +108,7 @@ export default function LandingPage({
             <div
               style={{
                 display: "flex",
+                flex: 0,
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
@@ -119,16 +121,16 @@ export default function LandingPage({
 
             {/* Footer individual */}
             {page.footer && (
-              <Footer backgroundColor="grey">{page.footer}</Footer>
+              <Footer
+                foreColor={page.footer.foreColor}
+                backgroundColor={page.footer.backgroundColor}>
+                
+                {page.footer.content}
+              </Footer>
             )}
           </Page>
         ))}
       </main>
-
-      {/* ===== FOOTER GLOBAL ===== */}
-      {footerProps && Object.keys(footerProps).length > 0 && (
-        <Footer {...footerProps} />
-      )}
     </div>
   );
 }
